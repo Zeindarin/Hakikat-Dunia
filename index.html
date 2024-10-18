@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Bagaimana mencari ketenangan?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Playfair+Display&display=swap');
+        
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-image: url('home.jpeg');
+            background-size: cover;
+            background-position: center;
+            overflow-y: auto;
+            transition: all 0.5s ease; /* Menambahkan transisi untuk body */
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            opacity: 1;
+            transition: opacity 0.5s ease; /* Transisi opacity saat login */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 50px;
+            color: white;
+            margin-bottom: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        h3 {
+            font-family: 'Comic Neue', cursive;
+            font-size: 24px;
+            color: white;
+            margin-top: 5px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            filter: blur(0.5px);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #002366;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #001a4d;
+        }
+
+        #welcomeMessage {
+            display: none;
+            font-size: 40px;
+            color: white;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease; /* Transisi masuknya pesan selamat datang */
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        /* Article styles */
+        #article {
+            display: none;            
+            font-size: 14px;
+            color: white;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 3s ease; /* Transisi masuknya artikel */
+       }
+        #article h2 {
+            color: white;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+       }
+        article p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        article ul {
+            padding-left: 20px;
+        }
+        
+        /* Menghilangkan border dari input dan textarea */
+        input, textarea {
+            border: none;
+            border-bottom: 1px solid #ccc; /* Bisa tambahkan garis bawah */
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box; /* Untuk menyesuaikan padding */
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none; /* Menghilangkan garis highlight saat focus */
+            border-bottom: 1px solid #555; /* Ubah warna garis bawah saat fokus */
+        }
+
+        /* Mengatur tampilan tombol kirim */
+        input[type="submit"] {
+            background-color: #4CAF50; /* Warna tombol */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Warna tombol saat di-hover */
+        }
+
+        /* Watermark */
+        #watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: white;
+            opacity: 0.5;
+            font-family: 'Comic Neue', cursive;
+        }
+        footer {
+            background-color: #2c3e50;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        body.scrolling {
+            overflow-y: scroll;
+        }
+       footer p {
+            margin: 0;
+        }
+       
+        
+       
+    </style>
+</head>
+<body>
+
+<div class="center-container" id="loginContainer">
+    <!-- Teks judul di atas login -->
+    <h1>Kajian Online</h1>
+    <h3>Hakikat dunia dalam pandangan Islam</h3>
+
+    <h2>Nama lengkap</h2>
+    <input type="text" id="namaLengkap" placeholder="Nama lengkap" required>
+    <br>
+    <button onclick="login()">masuk</button>
+</div>
+
+<div id="welcomeMessage"></div>
+
+<!-- Artikel -->
+<div id="article">
+
+				<h2>Mukadimah</h2>
+    <p>Alhamdulillahirabbil Alamin wabihi nastainu ala umuridduna waddin asholatu assalamuala asrofil ambiyaiwalmursalin sayyidina Muhammad wa ala Alihi wa shohbihi wabarik wassalim ajmain amma badu</p>
+    <p>Alhamdulillah segala puji Allah Tuhan semesta alam, marilah sama sama kita ucapkan nikmat syukur yang telah Allah berikan kepada kita baik itu rezeki, kesehatan, keselamatan juga waktu yang melimpah. Tidak lupa sholawatan serta salam semoga tetap tercurahkan kepada junjungan kita nabi besar Muhammad shalallahu alaihi wa salam, juga kepada para penerusnya hingga akhir zaman.</p>
+    <h2>Hakikat ketenangan yang hakiki</h2>
+    <p><strong>Pembukaan</strong><br>Alhamdulillah kembali lagi bersama Kami, apa itu dunia? tempat yang dimana menjadi sebuah kehidupan umat manusia dan juga sebagai media sarana untuk mencapai apa yang di impikan, Hidup bukan hanya tentang hari ini tetapi dengan berkelanjutan, disinilah kita akan merenungkannya.... (Keindahan tidak selamanya indah)</p>
+
+    <h2>Dunia ini hanyalah tempat persinggahan, ia adalah permainan dan hiburan yang melalaikan.</h2>
+    <p>Kehidupan dunia hanyalah sementara dan bersifat fana. Dunia ini ibarat sebuah permainan yang bisa membuat manusia lupa akan tujuan hidup sejatinya, yaitu akhirat. maka dari itu, Allah mengingatkan kita untuk tidak tertipu dengan keindahan dunia yang sesungguhnya hanyalah hiburan yang memabukkan. jika kamu tidak dapat mengontrol hidupmu maka kamu akan hancur.</p>
+    <blockquote><b>Rasulullah SAW bersabda:</b>
+
+"Dunia ini adalah penjara bagi orang mukmin dan surga bagi orang kafir." (HR. Muslim no. 2956).</blockquote>
+
+      <p>Bagi seorang mukmin, dunia penuh dengan berbagai cobaan dan ujian, baik dalam bentuk kesulitan maupun kesenangan. Musibah yang datang adalah cara Allah menguji kesabaran dan keikhlasan kita, sementara nikmat duniawi juga merupakan ujian apakah kita mampu bersyukur dan tidak terjebak dalam kesombongan.</p>
+      
+      <p>yang dimaksud dengan <b>"mukmin"</b> adalah orang yang benar-benar beriman kepada Allah SWT dengan iman yang kuat dan sejati, serta meyakini ajaran Islam dalam setiap aspek kehidupan. Seorang mukmin bukan hanya sekadar orang yang mengucapkan syahadat saja, tetapi ia juga mempraktikkan keimanan dalam perbuatan dan perilaku sehari-hari. Mukmin tersebut mencerminkan keimanan dengan ketaatan kepada Allah, mengikuti ajaran Rasulullah SAW, dan menghindari perbuatan maksiat.</p>
+
+    <h2>Dunia itu sebentar, dan akan berakhir dengan kesirnaan, Semua yang berlalu akan tinggal kenangan dan penyesalan.</h2>
+    <p><b>Dalam Al-Qur'an, Allah mengingatkan kita tentang kefanaan dunia:</b></p>
+    <blockquote>"Setiap yang bernyawa akan merasakan mati. Dan hanya pada hari kiamat sajalah diberikan dengan sempurna balasanmu." (QS. Ali 'Imran: 185).</blockquote>
+    <p>Dunia ini akan berakhir, segala sesuatu yang kita kumpulkan, termasuk harta, kedudukan, dan kesenangan akan hilang begitu saja. Yang tersisa hanyalah amal yang kita bawa untuk kehidupan akhirat. Mereka yang terlalu terpikat dengan dunia akan merasa menyesal karena telah lalai dari mengumpulkan bekal untuk akhirat.</p>
+  
+    <h2>Tapi ingat, dunia juga ladang dan tempat bekal dipersiapkan.</h2>
+    <p>Meskipun dunia sementara, ia juga adalah kesempatan bagi kita untuk menanam benih kebaikan. <b>Rasulullah SAW bersabda:</b></p>
+    <blockquote>"Dunia adalah ladang bagi akhirat." (HR. Al-Baihaqi no. 10425)</blockquote>
+    <p>Ini artinya, apa pun yang kita lakukan di dunia ini akan menjadi bekal di akhirat. Setiap perbuatan baik yang kita lakukan di dunia adalah investasi untuk kehidupan abadi kelak. maka dari itu jadilah orang yang beriman</p>
+     <p><b>Apa itu artinya orang yang beriman?</b>yaitu Melakukan perintah Allah dan menjauhi semua larangannya</p>
+    
+    
+    
+    <h2>Ingat juga sebaik-baik bekal adalah ketakwaan, Bukan harta, atau kedudukan</h2>
+    <p>Allah SWT mengingatkan bahwa yang paling berharga bukanlah harta atau status sosial, melainkan ketakwaan. <b>Firman Allah :</b></p>
+    
+   <blockquote>"Dan berbekallah, sesungguhnya sebaik-baik bekal adalah ketakwaan." (QS. Al-Baqarah: 197).</blockquote>
+   
+   <p>Ketakwaan adalah kesadaran penuh untuk menjalankan perintah Allah dan menjauhi larangan-Nya. Inilah bekal yang sesungguhnya, karena hanya amal kebaikan yang dilandasi ketakwaan yang akan diterima oleh Allah.</p>
+    
+    <h2>Istiqomahlah untuk melakukan ketaatan, Meski engkau dihampiri kekurangan</h2>
+    <p>Allah SWT menyukai hamba-Nya yang tetap istiqomah dalam ketaatan meskipun menghadapi berbagai kesulitan. <b>Rasulullah SAW bersabda:</b></p>
+    <blockquote>"Amalan yang paling dicintai Allah adalah amalan yang kontinu meskipun sedikit." (HR. Bukhari no. 6464 dan Muslim no. 782)</blockquote>
+    
+    <p>konsistensi dalam beribadah dan kebaikan, walaupun keadaan tidak selalu mendukung. Kesulitan atau kekurangan yang kita alami tidak boleh menjadi alasan untuk berhenti berbuat baik atau taat kepada Allah.</p>
+    
+    <h2>Tetaplah teguh di atas kebenaran dan kebaikan, Sampai nyawamu dijemput oleh kematian.</h2>
+    
+    <p><b>Allah SWT berfirman :</b></p>
+    <blockquote>"Wahai orang-orang yang beriman! Bertakwalah kepada Allah dengan sebenar-benarnya takwa, dan janganlah kamu mati kecuali dalam keadaan Muslim." (QS. Ali 'Imran: 102).</blockquote>
+    <p>Kematian adalah suatu kepastian, namun kapan datangnya tidak kita ketahui. Oleh karena itu, kita harus selalu siap dengan kebaikan dan ketaatan.</p>
+
+  
+    <h2>Kesimpulan</h2>
+    <p>Hakikat dunia dalam pandangan Islam adalah tempat persinggahan yang penuh ujian dan kesenangan yang menipu. Dunia bukanlah tujuan akhir, tetapi tempat untuk mempersiapkan bekal menuju kehidupan yang abadi, yaitu akhirat. Dalam perjalanan ini, ketakwaan adalah bekal terbaik, dan istiqomah dalam ketaatan adalah kunci untuk meraih ridha Allah. Sebagai muslim, kita diingatkan untuk tetap teguh di atas kebenaran hingga akhir kehidupan, karena hanya itulah yang akan menyelamatkan kita di akhirat kelak.</p>
+    
+    <p>Maka dari itu, bagi setiap Muslim, balas dendam terbaik adalah ketika seseorang mampu menahan amarah dan memilih pengampunan atas dasar keikhlasan. Sebagaimana diajarkan oleh Rasulullah SAW, pengampunan adalah tanda kekuatan, bukan kelemahan.</p>
+
+<h2>Referensi</h2>
+ <li>Al-Qur'an surah yang membahas hakikat dunia, seperti QS. Al-Hadid: 20, QS. Ali 'Imran: 185, QS. Al-Baqarah: 197, dan QS. Ali 'Imran: 102.</li>
+ <li>Hadist-hadits yang diriwayatkan oleh Imam Muslim dan Imam Bukhari, seperti hadits tentang dunia sebagai penjara bagi orang mukmin (HR. Muslim no. 2956) dan dunia sebagai ladang akhirat (HR. Al-Baihaqi no. 10425</li>
+ <li>Kitab Tafsir: Tafsir dari ulama seperti Tafsir Ibnu Katsir atau Tafsir Al-Qurtubi memberikan penjelasan rinci tentang ayat-ayat yang berkaitan dengan hakikat dunia</li>
+ <li> Kitab-kitab seperti Ihya Ulumuddin karya Imam Al-Ghazali sering kali membahas hubungan manusia dengan dunia, bagaimana menjaga keseimbangan antara kehidupan dunia dan akhirat, serta pentingnya ketakwaan.</li>
+ <li>Buku-buku Kontemporer: Penulis-penulis kontemporer seperti Sayyid Qutb dalam karyanya Fi Zilal al-Qur'an atau Yusuf Al-Qaradawi</li>
+ 
+<!-- Bagian Baca Juga Artikel Lainnya -->
+    <div class="related-articles">
+        <h2>Baca juga artikel yang lainnya</h2>
+        <il><p><a href="https://zeindarin.github.io/Ujian-yang-dianggap-nikmat/" target="_blank">Ujian yang dianggap nikmat</a></p></il>
+        <il><a href="https://zeindarin.github.io/Mencintai-dalam-diam/" target="blank">mencintai dalam diam</a></il>
+        <p><a href="https://zeindarin.github.io/Jangan-kangen/" target="blank">Jangan kangen</a></p>
+        <p><a href="https://zeindarin.github.io/Dakwah-istri/" target="blank"> dakwah istri untuk suaminya</a></p>
+        <p><a href="https://zeindarin.github.io/Jangan-balas-dendam/">Jangan balas dendam</a></p>
+          <h2><b>Ada kuisnya juga loh, yuk isi!..</b></h2><a href= "https://zeindarin.github.io/Kuis2/" target="blank"><p align ="center">klik disini:)</p></a>
+        <h2 align ="center"><b>Dukung Kami agar dalam membangun dakwah</b></h2><a href="https://saweria.co/Zeindarin" target="_blank"><p align ="center">kirim semangkuk bakso</p></a>
+
+</div>
+<!-- Watermark -->
+<p align ="center"><div id="watermark">Zeindarin</div></p>
+
+<script>
+    function login() {
+        const nama = document.getElementById('namaLengkap').value;
+        if (nama) {
+            // Menghilangkan kotak login dengan transisi
+            const loginContainer = document.getElementById('loginContainer');
+            loginContainer.classList.add('hidden');
+            setTimeout(() => loginContainer.style.display = 'none', 500); // Delay untuk memastikan transisi selesai
+
+            // Menampilkan pesan selamat datang dengan transisi
+            const message = document.getElementById('welcomeMessage');
+            message.textContent = `Selamat datang, ${nama}!`;
+            message.style.display = 'block';
+            setTimeout(() => message.style.opacity = 1, 100); // Transisi masuk setelah muncul
+
+            // Menampilkan artikel dengan transisi
+            const article = document.getElementById('article');
+            article.style.display = 'block';
+            setTimeout(() => article.style.opacity = 1, 100); // Transisi masuk setelah muncul
+
+            // Membuat body bisa di-scroll
+            document.body.classList.add('scrolling');
+            
+     }   
+        }
+        
+</script>
+<footer>
+    <p>&copy; 2024 Zeindarin . All rights reserved.</p>
+</footer>
+
+</body>
+</html>
